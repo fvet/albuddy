@@ -66,7 +66,7 @@ jobs:
           generate_release_notes: true
           fail_on_unmatched_files: true
 
-      - uses: actions/upload-artifact@v4
+      - uses: actions/upload-artifact@v7
         with:
           name: albuddy-vsix
           path: albuddy-*.vsix
