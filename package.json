@@ -2,7 +2,7 @@
   "name": "albuddy",
   "displayName": "AL Buddy",
   "description": "Handy extra tools for AL / Business Central development.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "publisher": "FredericVercaemst",
   "license": "MIT",
   "icon": "icons/icon128.png",
