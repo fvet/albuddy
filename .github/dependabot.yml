@@ -5,11 +5,32 @@ updates:
     schedule:
       interval: weekly
     groups:
-      dev-dependencies:
-        patterns:
-          - "*"
+      # Non-breaking updates travel together in one PR. Majors are deliberately
+      # left out so a single breaking bump (e.g. TypeScript 7, ESLint 10) can no
+      # longer block the whole batch the way it did in PR #5 - each major now
+      # gets its own PR to review and land on its own schedule.
+      npm-minor-and-patch:
+        applies-to: version-updates
+        update-types:
+          - minor
+          - patch
+    ignore:
+      # @types/node must track the Node major the CI/build actually runs
+      # (currently 22 - see .github/workflows/*.yml). Bump it by hand together
+      # with node-version.
+      - dependency-name: "@types/node"
+        update-types: ["version-update:semver-major"]
+      # TypeScript majors are gated on typescript-eslint widening its
+      # `typescript` peer range. Take them as one coordinated PR
+      # (typescript + typescript-eslint) when that lands.
+      - dependency-name: "typescript"
+        update-types: ["version-update:semver-major"]
 
   - package-ecosystem: github-actions
     directory: "/"
     schedule:
       interval: weekly
+    groups:
+      github-actions:
+        patterns:
+          - "*"
