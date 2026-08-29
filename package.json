@@ -1,0 +1,71 @@
+{
+  "name": "albuddy",
+  "displayName": "AL Buddy",
+  "description": "Handy extra tools for AL / Business Central development.",
+  "version": "0.0.1",
+  "publisher": "FredericVercaemst",
+  "license": "MIT",
+  "icon": "icons/icon128.png",
+  "engines": {
+    "vscode": "^1.95.0"
+  },
+  "repository": {
+    "type": "git",
+    "url": "https://github.com/fvet/albuddy.git"
+  },
+  "bugs": {
+    "url": "https://github.com/fvet/albuddy/issues"
+  },
+  "homepage": "https://github.com/fvet/albuddy#readme",
+  "categories": [
+    "Other"
+  ],
+  "keywords": [
+    "al",
+    "business central",
+    "dynamics 365",
+    "bc",
+    "erp"
+  ],
+  "galleryBanner": {
+    "color": "#505C6D",
+    "theme": "dark"
+  },
+  "main": "./dist/extension.js",
+  "activationEvents": [],
+  "contributes": {
+    "commands": [
+      {
+        "command": "albuddy.showVersion",
+        "title": "Show Version",
+        "category": "AL Buddy"
+      }
+    ]
+  },
+  "scripts": {
+    "vscode:prepublish": "npm run package",
+    "compile": "npm run check-types && npm run lint && node esbuild.js",
+    "watch": "node esbuild.js --watch",
+    "package": "npm run check-types && npm run lint && node esbuild.js --production",
+    "compile-tests": "tsc -p . --outDir out",
+    "watch-tests": "tsc -p . -w --outDir out",
+    "check-types": "tsc --noEmit",
+    "lint": "eslint src",
+    "pretest": "npm run compile-tests && npm run compile && npm run lint",
+    "test": "vscode-test",
+    "build-icons": "powershell -ExecutionPolicy Bypass -File icons/build-icons.ps1"
+  },
+  "devDependencies": {
+    "@eslint/js": "^9.19.0",
+    "@types/mocha": "^10.0.10",
+    "@types/node": "^22.13.0",
+    "@types/vscode": "^1.95.0",
+    "@vscode/test-cli": "^0.0.10",
+    "@vscode/test-electron": "^2.4.1",
+    "@vscode/vsce": "^3.2.2",
+    "esbuild": "^0.24.2",
+    "eslint": "^9.19.0",
+    "typescript": "^5.7.3",
+    "typescript-eslint": "^8.22.0"
+  }
+}

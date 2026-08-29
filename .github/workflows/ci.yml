@@ -1,0 +1,52 @@
+name: CI
+
+on:
+  push:
+    branches: [main]
+  pull_request:
+  workflow_dispatch:
+
+jobs:
+  build:
+    strategy:
+      fail-fast: false
+      matrix:
+        os: [ubuntu-latest, windows-latest]
+    runs-on: ${{ matrix.os }}
+
+    steps:
+      - uses: actions/checkout@v4
+
+      - uses: actions/setup-node@v4
+        with:
+          node-version: 22
+          cache: npm
+
+      - run: npm ci
+
+      - run: npm run lint
+
+      - run: npm run check-types
+
+      - run: npm run compile-tests
+
+      # The test suite launches a real VS Code instance. On Linux that needs a
+      # display, so it runs under xvfb; the other runners have one already.
+      - name: Test (Linux)
+        if: runner.os == 'Linux'
+        run: xvfb-run -a npm test
+
+      - name: Test (Windows)
+        if: runner.os != 'Linux'
+        run: npm test
+
+      # Proves the .vsix packages cleanly - the same step the release runs.
+      - name: Package
+        run: npx --yes @vscode/vsce package --out albuddy.vsix
+
+      - uses: actions/upload-artifact@v4
+        if: runner.os == 'Linux'
+        with:
+          name: albuddy-vsix
+          path: albuddy.vsix
+          retention-days: 7

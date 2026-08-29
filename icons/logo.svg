@@ -1,0 +1,27 @@
+<svg xmlns="http://www.w3.org/2000/svg" viewBox="0 0 128 128" width="128" height="128">
+  <!--
+    AL Buddy brand mark: the letters "AL" with the trailing period rendered
+    as the Business Central accent dot. Segoe UI Semibold is rasterised at
+    build time (icons/build-icons.ps1), so the shipped PNG does not depend on
+    the font being installed on the reader's machine.
+
+    Same construction as the BC Buddy mark: the letters sit high and near the
+    edges, a "bite" mask lifts a disc out of the bottom-right where the
+    companion dot rests, and the dot carries the brand colour.
+
+    Colours follow the Business Central control add-in style guide: #00B7C3
+    (primary) for the dot. The letters use #737C8A rather than the guide's
+    Secondary #505C6D so the mark stays legible on both the light and dark
+    editor backgrounds it sits on in the Extensions view and status bar.
+  -->
+  <mask id="bite">
+    <rect width="128" height="128" fill="#fff"/>
+    <circle cx="103" cy="97" r="26" fill="#000"/>
+  </mask>
+  <g mask="url(#bite)">
+    <text x="5" y="84" text-anchor="start"
+          font-family="'Segoe UI Semibold','Segoe UI',Segoe,Tahoma,Helvetica,Arial,sans-serif"
+          font-weight="600" font-size="88" letter-spacing="-4" fill="#737C8A">AL</text>
+  </g>
+  <circle cx="103" cy="97" r="19" fill="#00B7C3"/>
+</svg>

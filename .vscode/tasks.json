@@ -1,0 +1,32 @@
+{
+  "version": "2.0.0",
+  "tasks": [
+    {
+      "label": "watch",
+      "type": "npm",
+      "script": "watch",
+      "isBackground": true,
+      "group": {
+        "kind": "build",
+        "isDefault": true
+      },
+      "problemMatcher": "$esbuild-watch",
+      "presentation": {
+        "reveal": "never",
+        "group": "watch"
+      }
+    },
+    {
+      "label": "watch-tests",
+      "type": "npm",
+      "script": "watch-tests",
+      "isBackground": true,
+      "group": "build",
+      "problemMatcher": "$tsc-watch",
+      "presentation": {
+        "reveal": "never",
+        "group": "watch"
+      }
+    }
+  ]
+}
