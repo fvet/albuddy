@@ -21,8 +21,11 @@ output, docs. There are no localised strings yet.
 - **Every user-visible change gets a `CHANGELOG.md` entry** under `## Unreleased`,
   in the same commit, written for users. Build/CI/dependency work does not.
 - **`README.md` and `DEVELOPMENT.md` split by reader**: README is for users of
-  the extension, DEVELOPMENT is for contributors. A behaviour change usually
-  touches README + CHANGELOG; a workflow/tooling change touches DEVELOPMENT.
+  the extension, DEVELOPMENT is for contributors and maintainers (build, test,
+  and the full publish flow). A behaviour change usually touches README +
+  CHANGELOG; a workflow/tooling change touches DEVELOPMENT.
+- **`backlog.md`** holds unsized feature ideas (much of it "learn from AL
+  Toolbox / contribute to AlCops"). Move an item out of it when work starts.
 - **Icon**: edit `icons/logo.svg`, then `npm run build-icons`, then commit the
   regenerated PNGs. `package.json` ships `icon128.png`.
 - **Versioning**: the Marketplace version follows the Git tag. Release steps are
